@@ -1,0 +1,18 @@
+[package]
+name = "causalkit"
+version = "0.1.1"
+edition = "2021"
+
+[lib]
+name = "causalkit"
+crate-type = ["cdylib"]
+
+[dependencies]
+csv = "1.1"
+serde = { version = "1.0", features = ["derive"] }
+spin = "0.9.8"
+serde_json = "1.0"
+rand = "0.7"
+pyo3 = { version = "0.21", features = ["extension-module"] }
+numpy = "0.21"
+ndarray = "0.13"
