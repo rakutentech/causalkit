@@ -9,7 +9,7 @@ jobs:
     container: quay.io/pypa/manylinux2014_x86_64
     steps:
      - uses: actions/checkout@v1
-     - name: build and publish
+     - name: build
        env:
          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
        run: |
@@ -17,3 +17,10 @@ jobs:
          source $HOME/.cargo/env
          rustup default stable
          bash .github/workflows/build-wheels.sh
+     - name: Publish to PyPI
+       env:
+         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+       run: |
+         python3 -m pip install twine
+         twine upload target/wheels/*
