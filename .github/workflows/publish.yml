@@ -23,4 +23,4 @@ jobs:
          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
        run: |
          /opt/python/cp310-cp310/bin/python -m pip install twine
-         twine upload target/wheels/*
+         /opt/python/cp310-cp310/bin/twine upload target/wheels/*
