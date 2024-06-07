@@ -13,5 +13,3 @@ done
 
 # Move repaired wheels back to target/wheels
 mv wheelhouse/*.whl target/wheels/
-
-/opt/python/cp310-cp310/bin/maturin publish --username __token__ --password ${PYPI_API_TOKEN}
