@@ -9,13 +9,11 @@ jobs:
     container: quay.io/pypa/manylinux2014_x86_64
     steps:
      - uses: actions/checkout@v1
-     - name: prepare rust
+     - name: build and publish
+       env:
+         PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
        run: |
          curl https://sh.rustup.rs -sSf | sh -s -- -y
          source $HOME/.cargo/env
          rustup default stable
-     - name: build and publish
-       env:
-         PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-       run: bash .github/workflows/build-wheels.sh
-
+         bash .github/workflows/build-wheels.sh
