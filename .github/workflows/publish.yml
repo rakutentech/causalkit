@@ -1,9 +1,6 @@
 name: publish-causalkit
 
-on:
-  push:
-    tags:
-       - 'v*'
+on: [push]
 
 jobs:
 
